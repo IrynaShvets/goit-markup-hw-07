@@ -24,7 +24,13 @@ body {
   margin: 0;
 }
 
-.list {
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -67,7 +73,7 @@ body {
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.title {
+.section__title {
   margin-top: 0;
   margin-bottom: 50px;
   font-size: 36px;
@@ -75,9 +81,22 @@ body {
   text-align: center;
 }
 
+.section__title--visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 /* Навигация хедера */
 
-header {
+.header {
   border-bottom: 1px solid #ececec;
 }
 
@@ -111,7 +130,7 @@ header {
   line-height: 1.19;
 }
 
-.header-nav__logo-accent {
+.header-nav__logo--color {
   color: var(--selection-color);
 }
 
@@ -128,7 +147,7 @@ header {
   position: relative;
 }
 
-.header-nav__link-current::after {
+.header-nav__link--current::after {
   position: absolute;
   bottom: -1px;
   left: 0;
@@ -144,12 +163,12 @@ header {
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header-nav__link-current:hover:after {
+.header-nav__link--current:hover:after {
   transform: scaleX(0);
   opacity: 0;
 }
 
-.header-nav__link-current,
+.header-nav__link--current,
 .header-nav__list .header-nav__link:hover,
 .header-nav__list .header-nav__link:focus {
   color: var(--selection-color);
@@ -199,9 +218,11 @@ header {
 
 .header-contacts__icon {
   margin-right: 10px;
-  fill: var(--secondary-text-color);
 }
 
+.header-contacts__icon--color {
+  fill: var(--secondary-text-color);
+}
 /* Герой */
 
 .hero {
@@ -281,12 +302,16 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #f5f4fa;
   border-radius: 4px;
   margin-bottom: 30px;
 }
 
+.strategy__icon--background {
+  background: #f5f4fa;
+}
+
 .strategy__title {
+  margin: 0;
   margin-bottom: 10px;
   font-size: 14px;
   line-height: 1.14;
@@ -294,32 +319,18 @@ header {
 }
 
 .strategy__text {
-  color: var(--secondary-text-color);
+  margin: 0;
+  font-weight: normal;
   line-height: 1.71;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+.strategy__text--color {
+  color: var(--secondary-text-color);
 }
 
 /* Занятия */
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.section-top {
+.section--offset {
   padding-top: 0;
 }
 
@@ -348,7 +359,7 @@ img {
   background: rgba(47, 48, 58, 0.8);
 }
 
-.work-img__title {
+.work-img__subtitle {
   margin: 0;
   text-align: center;
   text-transform: uppercase;
@@ -360,7 +371,7 @@ img {
 
 /* Команда */
 
-.section-inner {
+.section--background {
   background: #f5f4fa;
 }
 
@@ -408,8 +419,6 @@ img {
 .socials {
   display: flex;
   justify-content: center;
-  padding: 0;
-  margin: 0;
 }
 
 .socials__item {
@@ -447,8 +456,6 @@ img {
 .clients-list {
   display: flex;
   justify-content: center;
-  padding: 0;
-  margin: 0;
 }
 
 .clients-list__item {
@@ -625,11 +632,11 @@ img {
   margin-bottom: 20px;
 }
 
-.footer-link__logo-accent {
+.footer-link__logo--accent {
   color: var(--selection-color);
 }
 
-.footer-link__logo-color {
+.footer-link__logo--color {
   color: #ffffff;
 }
 
@@ -662,7 +669,7 @@ img {
   width: 206px;
 }
 
-.subtitle {
+.join__subtitle {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -675,7 +682,7 @@ img {
   margin-bottom: 20px;
 }
 
-.socials__icon-highlighted {
+.socials__icon--highlighted {
   fill: #ffffff;
   background: rgba(255, 255, 255, 0.1);
 }
@@ -686,6 +693,18 @@ img {
   margin-left: 93px;
 }
 
+.subscribe__subtitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 20px;
+}
 .form-subscribe__label {
   display: flex;
   visibility: hidden;
@@ -782,7 +801,7 @@ img {
   transition: transform 250ms ease-in-out 250ms, opacity 250ms ease-in 250ms;
 }
 
-.button-close {
+.modal__button-close {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -797,12 +816,12 @@ img {
   cursor: pointer;
 }
 
-.button-close:hover,
-.button-close:focus {
+.modal__button-close:hover,
+.modal__button-close:focus {
   color: var(--selection-color);
 }
 
-.button-close__icon {
+.modal__icon-close {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -811,13 +830,13 @@ img {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button-close__icon {
+.modal__icon-close {
   fill: currentColor;
 }
 
 /* Форма */
 
-.form {
+.modal-form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -825,7 +844,7 @@ img {
   width: 448px;
 }
 
-.form__title {
+.modal-form__title {
   font-size: 20px;
   line-height: 1.15;
   text-align: center;
@@ -834,33 +853,34 @@ img {
   margin-bottom: 9px;
   letter-spacing: 0.03em;
 }
-.form__field {
+
+.modal-form__field {
   position: relative;
   margin-bottom: 7px;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form__field:hover,
-.form__field:focus {
+.modal-form__field:hover,
+.modal-form__field:focus {
   color: var(--selection-color);
 }
 
-.form__field:focus-within {
+.modal-form__field:focus-within {
   color: var(--selection-color);
 }
 
-.form__field label {
+.modal-form__field .modal-form__label {
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.01em;
   color: var(--secondary-text-color);
 }
 
-.form__field input {
+.modal-form__field .modal-form__input {
   margin-top: 4px;
 }
 
-.form__input {
+.modal-form__input {
   width: 100%;
   height: 40px;
   border-radius: 4px;
@@ -870,12 +890,12 @@ img {
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form__input:hover,
-.form__input:focus {
+.modal-form__input:hover,
+.modal-form__input:focus {
   border-color: var(--selection-color);
 }
 
-.form__icon {
+.modal-form__icon {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -888,22 +908,22 @@ img {
   fill: currentColor;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.form__field textarea {
+.modal-form__field .modal-form__textarea {
   margin-top: 4px;
 }
 
-.form__field-end {
+.modal-form__field--end {
   margin-bottom: 17px;
 }
 
-.form__field-end textarea::placeholder {
+.modal-form__field--end .modal-form__textarea::placeholder {
   color: rgba(117, 117, 117, 0.5);
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.01em;
 }
 
-.form__textarea {
+.modal-form__textarea {
   resize: none;
   padding: 12px 16px;
   width: 100%;
@@ -914,14 +934,14 @@ img {
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form__textarea:hover,
-.form__textarea:focus {
+.modal-form__textarea:hover,
+.modal-form__textarea:focus {
   border-color: var(--selection-color);
 }
 
 /* Чекбокс */
 
-.form__agreement {
+.modal-form__agreement {
   position: relative;
   display: block;
   display: flex;
@@ -936,7 +956,7 @@ img {
   color: var(--secondary-text-color);
 }
 
-.form__check {
+.modal-form__check {
   display: inline-block;
   width: 16px;
   height: 15px;
@@ -945,7 +965,7 @@ img {
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form__checkbox:checked + .form__check {
+.modal-form__checkbox:checked + .modal-form__check {
   border-color: var(--selection-color);
   background-color: var(--selection-color);
   background-image: url(../images/icon-check.svg);
@@ -956,13 +976,13 @@ img {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form__checkbox:hover,
-.form__checkbox:focus {
+.modal-form__checkbox:hover,
+.modal-form__checkbox:focus {
   border-color: var(--selection-color);
   background-color: var(--selection-color);
 }
 
-.form__link {
+.modal-form__link {
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
@@ -970,7 +990,7 @@ img {
   margin-left: 3px;
 }
 
-.form__submit {
+.modal-form__submit {
   display: block;
   width: 200px;
   margin-left: auto;
@@ -978,8 +998,8 @@ img {
   padding: 10px 55px 10px 56px;
 }
 
-.form__submit:hover,
-.form__submit:focus {
+.modal-form__submit:hover,
+.modal-form__submit:focus {
   color: #000000;
   background-color: #c4c4c4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
