@@ -405,22 +405,22 @@ img {
   text-align: center;
 }
 
-.link-list {
+.socials {
   display: flex;
   justify-content: center;
   padding: 0;
   margin: 0;
 }
 
-.link-list__item {
+.socials__item {
   margin-left: 10px;
 }
 
-.link-list__item:first-child {
+.socials__item:first-child {
   margin-left: 0;
 }
 
-.link-list__icon {
+.socials__icon {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -432,13 +432,13 @@ img {
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.link-list__icon:hover svg,
-.link-list__icon:focus svg {
+.socials__icon:hover svg,
+.socials__icon:focus svg {
   fill: #ffffff;
 }
 
-.link-list__icon:hover,
-.link-list__icon:focus {
+.socials__icon:hover,
+.socials__icon:focus {
   background-color: var(--selection-color);
 }
 
@@ -675,7 +675,7 @@ img {
   margin-bottom: 20px;
 }
 
-.link-list__icon-highlighted {
+.socials__icon-highlighted {
   fill: #ffffff;
   background: rgba(255, 255, 255, 0.1);
 }
