@@ -1,0 +1,38 @@
+.section--offset {
+  padding-top: 0;
+}
+
+.work-img {
+  display: flex;
+  flex-basis: calc(100% / 3 - 30px);
+}
+
+.work-img .work-img__list + .work-img__list {
+  margin-left: 30px;
+}
+
+.work-img__list {
+  position: relative;
+}
+
+.work-img__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(47, 48, 58, 0.8);
+}
+
+.work-img__subtitle {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.14;
+  color: $primary-color;
+}

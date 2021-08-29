@@ -1,0 +1,41 @@
+.clients-list {
+  display: flex;
+  justify-content: center;
+}
+
+.clients-list__item {
+  border-radius: $primary-border-radius;
+  margin-right: 30px;
+}
+
+.clients-list__item:last-child {
+  margin-right: 0;
+}
+
+.clients-list__icon {
+  fill: currentColor;
+}
+
+.clients-list__link:hover,
+.clients-list__link:focus {
+  color: $selection-color;
+}
+
+.clients-list__link:hover,
+.clients-list__link:focus {
+  border-color: $selection-color;
+}
+
+.clients-list__link {
+  @include bordered(1px, $icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $icon-color;
+  width: 170px;
+  height: 92px;
+  cursor: pointer;
+  border-radius: $primary-border-radius;
+  transition: color 250ms $transition-cubic-bezier,
+    border-color 250ms $transition-cubic-bezier;
+}
