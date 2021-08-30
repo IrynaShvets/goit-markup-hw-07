@@ -30,13 +30,10 @@ ul {
 }
 
 .section {
-  display: flex;
-  justify-content: center;
+  @include sectionPadding(94px, 94px);
+  @include flex(flex, center, center);
   flex-direction: column;
   height: 100%;
-  align-items: center;
-  padding-top: 94px;
-  padding-bottom: 94px;
 }
 
 .container {
@@ -49,16 +46,20 @@ ul {
 }
 
 .button {
+  @include font(inherit, 16px, 700, 1.88, 0.06em, $button-color);
   display: inline-block;
-  @include font(inherit, 16px, bold, 1.88, 0.06em, $button-color);
   align-items: center;
   cursor: pointer;
   background-color: $selection-color;
   border-radius: $primary-border-radius;
   border: 1px solid transparent;
-  transition: color 250ms $transition-cubic-bezier,
-    background-color 250ms $transition-cubic-bezier,
-    box-shadow 250ms $transition-cubic-bezier;
+  @include transition(
+    color,
+    background-color,
+    box-shadow,
+    250ms,
+    $transition-cubic-bezier
+  );
 }
 
 .section__title {

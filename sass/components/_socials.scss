@@ -5,30 +5,33 @@
 
 .socials__item {
   margin-left: 10px;
-}
 
-.socials__item:first-child {
-  margin-left: 0;
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 .socials__icon {
+  @include flex(inline-flex, center, center);
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   fill: $icon-color;
-  transition: fill 250ms $transition-cubic-bezier,
-    background-color 250ms $transition-cubic-bezier;
+  @include transition(
+    fill,
+    background-color,
+    null,
+    250ms,
+    $transition-cubic-bezier
+  );
+
+  &:hover,
+  &:focus {
+    background-color: $selection-color;
+  }
 }
 
 .socials__icon:hover svg,
 .socials__icon:focus svg {
   fill: $primary-color;
-}
-
-.socials__icon:hover,
-.socials__icon:focus {
-  background-color: $selection-color;
 }

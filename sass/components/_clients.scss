@@ -28,14 +28,17 @@
 
 .clients-list__link {
   @include bordered(1px, $icon-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $icon-color;
+  @include flex(flex, center, center);
   width: 170px;
   height: 92px;
+  color: $icon-color;
   cursor: pointer;
   border-radius: $primary-border-radius;
-  transition: color 250ms $transition-cubic-bezier,
-    border-color 250ms $transition-cubic-bezier;
+  @include transition(
+    color,
+    border-color,
+    null,
+    250ms,
+    $transition-cubic-bezier
+  );
 }

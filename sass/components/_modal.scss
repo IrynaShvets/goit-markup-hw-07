@@ -6,7 +6,7 @@
   height: 100%;
   background: $backdrop-background;
   opacity: 1;
-  transition: opacity 250ms $transition-cubic-bezier;
+  @include transition(opacity, null, null, 250ms, $transition-cubic-bezier);
 }
 
 .backdrop.is-hidden .modal {
@@ -22,17 +22,17 @@
 
 .modal {
   position: absolute;
-  padding: 40px;
   top: 50%;
   left: 50%;
+  display: flex;
+  justify-content: flex-end;
   width: 528px;
   height: 581px;
+  padding: 40px;
   background: $primary-color;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: $primary-border-radius;
-  display: flex;
-  justify-content: flex-end;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   transition: transform 250ms ease-in-out 250ms, opacity 250ms ease-in 250ms;
@@ -44,18 +44,18 @@
   right: 8px;
   width: 30px;
   height: 30px;
-  border: 0;
   padding: 0;
   margin: 0;
-  @include bordered(1px, $modal-close-border);
-  background: $primary-color;
+  border: 0;
+  border: 1px solid $modal-close-border;
   border-radius: 50%;
   cursor: pointer;
-}
+  background: $primary-color;
 
-.modal__button-close:hover,
-.modal__button-close:focus {
-  color: $selection-color;
+  &:hover,
+  &:focus {
+    color: $selection-color;
+  }
 }
 
 .modal__icon-close {
@@ -64,7 +64,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   fill: $modal-close-color;
-  transition: color 250ms $transition-cubic-bezier;
+  @include transition(color, null, null, 250ms, $transition-cubic-bezier);
 }
 
 .modal__icon-close {
@@ -82,24 +82,29 @@
 }
 
 .modal-form__title {
-  font-size: 20px;
-  line-height: 1.15;
+  @include font(
+    $primary-font-family,
+    20px,
+    700,
+    1.15,
+    0.03em,
+    $primary-text-color
+  );
   text-align: center;
   margin: 0;
   padding: 0;
   margin-bottom: 9px;
-  letter-spacing: 0.03em;
 }
 
 .modal-form__field {
   position: relative;
   margin-bottom: 7px;
-  transition: color 250ms $transition-cubic-bezier;
-}
+  @include transition(color, null, null, 250ms, $transition-cubic-bezier);
 
-.modal-form__field:hover,
-.modal-form__field:focus {
-  color: $selection-color;
+  &:hover,
+  &:focus {
+    color: $selection-color;
+  }
 }
 
 .modal-form__field:focus-within {
@@ -107,29 +112,30 @@
 }
 
 .modal-form__field .modal-form__label {
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.01em;
-  color: $secondary-text-color;
-}
-
-.modal-form__field .modal-form__input {
-  margin-top: 4px;
+  @include font(
+    $primary-font-family,
+    12px,
+    400,
+    1.17,
+    0.01em,
+    $secondary-text-color
+  );
 }
 
 .modal-form__input {
+  @include bordered(1px, $modal-input-color);
+  margin-top: 4px;
   width: 100%;
   height: 40px;
   border-radius: $primary-border-radius;
-  @include bordered(1px, $modal-input-color);
   padding: 12px 42px;
   outline: none;
-  transition: border 250ms $transition-cubic-bezier;
-}
+  @include transition(border, null, null, 250ms, $transition-cubic-bezier);
 
-.modal-form__input:hover,
-.modal-form__input:focus {
-  border-color: $selection-color;
+  &:hover,
+  &:focus {
+    border-color: $selection-color;
+  }
 }
 
 .modal-form__icon {
@@ -143,32 +149,34 @@
   width: 18px;
   height: 18px;
   fill: currentColor;
-  transition: color 250ms $transition-cubic-bezier;
-}
-.modal-form__field .modal-form__textarea {
-  margin-top: 4px;
+  @include transition(color, null, null, 250ms, $transition-cubic-bezier);
 }
 
 .modal-form__field--end {
   margin-bottom: 17px;
 }
 
-.modal-form__field .modal-form__textarea::placeholder {
-  color: $modal-placeholder-color;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.01em;
-}
-
 .modal-form__textarea {
   resize: none;
+  margin-top: 4px;
   padding: 12px 16px;
   width: 100%;
   height: 120px;
   border-radius: $primary-border-radius;
   @include bordered(1px, $modal-input-color);
   outline: none;
-  transition: border 250ms $transition-cubic-bezier;
+  @include transition(border, null, null, 250ms, $transition-cubic-bezier);
+
+  &::placeholder {
+    @include font(
+      $primary-font-family,
+      14px,
+      400,
+      1.14,
+      0.01em,
+      $modal-placeholder-color
+    );
+  }
 }
 
 .modal-form__textarea:hover,
@@ -179,27 +187,34 @@
 /* Чекбокс */
 
 .modal-form__agreement {
+  @include font(
+    $primary-font-family,
+    14px,
+    400,
+    1.71,
+    0.03em,
+    $secondary-text-color
+  );
   position: relative;
   display: block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(flex, center, center);
   margin-bottom: 30px;
   cursor: pointer;
-  font-size: 14px;
-  line-height: 1.71;
-  font-weight: normal;
-  letter-spacing: 0.03em;
-  color: $secondary-text-color;
 }
 
 .modal-form__check {
+  @include bordered(2px, $primary-text-color);
   display: inline-block;
   width: 16px;
   height: 15px;
   margin-right: 7px;
-  @include bordered(2px, $primary-text-color);
-  transition: border 2500ms $transition-cubic-bezier;
+  outline: none;
+  @include transition(border, null, null, 250ms, $transition-cubic-bezier);
+
+  &:hover,
+  &:focus {
+    border-color: $selection-color;
+  }
 }
 
 .modal-form__checkbox:checked + .modal-form__check {
@@ -210,20 +225,24 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   border-radius: 2px;
-  transition: background-color 250ms $transition-cubic-bezier;
-}
-
-.modal-form__checkbox:hover,
-.modal-form__checkbox:focus {
-  border-color: $selection-color;
-  background-color: $selection-color;
+  @include transition(
+    background-color,
+    null,
+    null,
+    250ms,
+    $transition-cubic-bezier
+  );
 }
 
 .modal-form__link {
-  font-size: 14px;
-  line-height: 1.71;
-  letter-spacing: 0.03em;
-  color: $selection-color;
+  @include font(
+    $primary-font-family,
+    14px,
+    400,
+    1.71,
+    0.03em,
+    $selection-color
+  );
   margin-left: 3px;
 }
 
@@ -233,13 +252,13 @@
   margin-left: auto;
   margin-right: auto;
   padding: 10px 55px 10px 56px;
-}
 
-.modal-form__submit:hover,
-.modal-form__submit:focus {
-  color: $button-hover-color;
-  background-color: $button-hover-background;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  &:hover,
+  &:focus {
+    color: $button-hover-color;
+    background-color: $button-hover-background;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  }
 }
 
 /* Анимация */

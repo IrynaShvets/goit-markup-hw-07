@@ -20,33 +20,39 @@
   display: block;
   padding-top: 24px;
   padding-bottom: 25px;
+  &--color {
+    color: $selection-color;
+  }
 }
 
 .logo {
-  color: $logo-color;
-  font-family: $logo-font-family;
+  @include font($logo-font-family, 26px, bold, 1.19, 0.03em, $logo-color);
   text-decoration: none;
   font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
-  line-height: 1.19;
-}
-
-.header-nav__logo--color {
-  color: $selection-color;
 }
 
 .header-nav__link {
+  @include font(
+    $primary-font-family,
+    14px,
+    500,
+    1.14,
+    0.02em,
+    $primary-text-color
+  );
+  position: relative;
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
-  color: $primary-text-color;
-  text-decoration: none;
   font-style: normal;
-  line-height: 1.14;
-  letter-spacing: 0.02em;
-  transition: color 250ms $transition-cubic-bezier;
-  position: relative;
+  text-decoration: none;
+  @include transition(color, null, null, 250ms, $transition-cubic-bezier);
+
+  &--current,
+  &:hover,
+  &:focus {
+    color: $selection-color;
+  }
 }
 
 .header-nav__link--current::after {
@@ -61,19 +67,18 @@
   border-radius: 2px;
   transform: scaleX(1);
   opacity: 1;
-  transition: transform 250ms $transition-cubic-bezier,
-    opacity 250ms $transition-cubic-bezier;
+  @include transition(
+    transform,
+    opacity,
+    null,
+    250ms,
+    $transition-cubic-bezier
+  );
 }
 
-.header-nav__link--current:hover:after {
+.header-nav__link--current:hover::after {
   transform: scaleX(0);
   opacity: 0;
-}
-
-.header-nav__link--current,
-.header-nav__list .header-nav__link:hover,
-.header-nav__list .header-nav__link:focus {
-  color: $selection-color;
 }
 
 .header-nav__navbar .header-nav__list + .header-nav__list {
@@ -91,20 +96,20 @@
   margin-left: 50px;
 }
 
-.header-contacts__link {
+.header-contacts__list .header-contacts__link {
   display: flex;
   align-items: center;
-  color: $secondary-text-color;
+  padding: 32px 0;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  color: $secondary-text-color;
   text-decoration: none;
-  padding: 32px 0;
-  transition: color 250ms $transition-cubic-bezier;
-}
+  @include transition(color, null, null, 250ms, $transition-cubic-bezier);
 
-.header-contacts__link:hover,
-.header-contacts__link:focus {
-  color: $selection-color;
+  &:hover,
+  &:focus {
+    color: $selection-color;
+  }
 }
 
 .header-contacts__link:hover .header-contacts__icon,
@@ -113,15 +118,14 @@
 }
 
 .header-contacts__list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(flex, center, center);
 }
 
 .header-contacts__icon {
   margin-right: 10px;
-}
 
-.header-contacts__icon--color {
-  fill: $secondary-text-color;
+  &--color {
+    fill: $secondary-text-color;
+    @include transition(fill, null, null, 250ms, $transition-cubic-bezier);
+  }
 }
